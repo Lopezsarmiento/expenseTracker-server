@@ -4,6 +4,7 @@ const dotenv = require("dotenv"); // allows to create global vars
 const colors = require("colors"); // colors for console
 const morgan = require("morgan"); // logging
 const connectDB = require("./config/db");
+const cors = require("cors");
 const transactions = require("./routes/transactions");
 
 dotenv.config({ path: "./config/config.env" });
@@ -12,6 +13,7 @@ dotenv.config({ path: "./config/config.env" });
 connectDB();
 
 const app = express();
+app.use(cors());
 
 // this allows us to use bodyparser
 app.use(express.json());
